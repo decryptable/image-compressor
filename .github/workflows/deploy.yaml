@@ -19,6 +19,8 @@ jobs:
     steps:
       - id: build-publish
         uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        env:
+          VITE_PUBLIC_URL: ${{ github.event.repository.name }}
         with:
           path: dist
           install_command: npm i
