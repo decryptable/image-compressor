@@ -39,3 +39,5 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
+        env:
+          VITE_PUBLIC_URL: ${{ github.event.repository.name }}

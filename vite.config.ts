@@ -4,11 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 import path from "path"
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+export default (({ mode }: { mode: string }) => {
+  const base = mode === 'production' ? `/${process.env.VITE_PUBLIC_URL || 'image-compressor'}` : '/'
+  return defineConfig({
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+      },
     },
-  },
+    base
+  })
 })
