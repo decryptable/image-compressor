@@ -1,10 +1,10 @@
 name: Deploy React App to GitHub Pages
 
-permissions:
-  contents: write
-
 on:
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -26,6 +26,9 @@ jobs:
         run: bun run build
         env:
           PUBLIC_URL: /${{ github.event.repository.name }}
+
+      - name: Verify Build Output
+        run: ls -la dist
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
