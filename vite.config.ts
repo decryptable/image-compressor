@@ -8,6 +8,9 @@ export default (({ mode }: { mode: string }) => {
   const base = mode === 'production' ? `/${process.env.VITE_PUBLIC_URL || 'image-compressor'}` : '/'
   return defineConfig({
     plugins: [react(), tailwindcss()],
+    build: {
+      outDir: 'build',
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
